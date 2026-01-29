@@ -129,10 +129,20 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
+    max-width: 100%;
   }
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    overflow-x: clip;
+    max-width: 100%;
+  }
+
+  #root {
+    overflow-x: clip;
+    max-width: 100%;
+    width: 100%;
   }
 
   /* Tipografía para encabezados */

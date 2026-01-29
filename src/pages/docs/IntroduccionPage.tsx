@@ -7,7 +7,7 @@ const secciones = [
 const IntroduccionPage = () => {
   return (
     <DocLayout
-      titulo="Inicio"
+      titulo="Introducción"
       descripcion="Bienvenida al manual de operaciones para ver el funcionamiento de Solhub."
       seccionId="inicio"
       secciones={secciones}
