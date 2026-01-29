@@ -9,8 +9,8 @@ const Footer = () => {
   const añoActual = new Date().getFullYear();
 
   return (
-    <footer className="footer-solware py-12">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+    <footer className="footer-solware py-12 w-full max-w-full overflow-x-clip">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 w-full">
         {/* Bloque único centrado */}
         <div className="text-center">
           {/* Título de la sección */}
@@ -84,7 +84,16 @@ const Footer = () => {
           
           {/* Copyright */}
           <p className="footer__copyright text-sm">
-            © {añoActual} Solware. Todos los derechos reservados.
+            © {añoActual}{" "}
+            <a
+              href="https://www.solware.agency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+            >
+              Solware
+            </a>
+            . Todos los derechos reservados.
           </p>
         </div>
       </div>

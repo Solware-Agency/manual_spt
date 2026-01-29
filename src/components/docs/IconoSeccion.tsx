@@ -17,7 +17,8 @@ import {
 // Mapeo de iconos por sección
 const iconosPorSeccion: Record<string, LucideIcon> = {
   // Nueva estructura SolHub
-  inicio: Home,
+  landing: Home,
+  inicio: BookOpen,
   "como-instalar-solhub": BookOpen,
   solhub: Stethoscope,
   "exp-propietario": Users,
@@ -47,6 +48,7 @@ const iconosPorSeccion: Record<string, LucideIcon> = {
 // Colores de fondo para cada sección
 const coloresPorSeccion: Record<string, string> = {
   // Nueva estructura SolHub
+  landing: "bg-primary/10 text-primary",
   inicio: "bg-primary/10 text-primary",
   "como-instalar-solhub": "bg-cyan-500/10 text-cyan-500",
   solhub: "bg-teal-500/10 text-teal-500",

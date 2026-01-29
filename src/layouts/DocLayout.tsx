@@ -46,28 +46,28 @@ const DocLayout = ({
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-clip w-full min-w-0 max-w-full">
       <Header
         onMenuClick={() => setMenuAbierto(!menuAbierto)}
         menuAbierto={menuAbierto}
       />
 
-      <div className="flex-1 flex">
+      <div className="flex-1 flex min-w-0">
         <Sidebar abierto={menuAbierto} onCerrar={() => setMenuAbierto(false)} />
 
         {/* Contenido principal */}
-        <main className="flex-1 lg:pl-72">
-          <div className="container max-w-6xl py-8 lg:py-12">
-            <div className="flex gap-12">
+        <main className="flex-1 min-w-0 lg:pl-72 overflow-x-clip">
+          <div className="container max-w-6xl py-6 px-4 sm:py-8 sm:px-6 lg:py-12 lg:px-8 w-full max-w-full overflow-x-clip">
+            <div className="flex flex-col gap-6 xl:flex-row xl:gap-12">
               {/* Área de contenido */}
               <article className="flex-1 min-w-0 animate-fade-in">
                 <Breadcrumbs items={breadcrumbItems} />
 
                 {/* Encabezado de la página */}
-                <header className="mb-8">
-                  <div className="flex items-center gap-4 mb-4">
+                <header className="mb-6 sm:mb-8">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4 mb-4">
                     <IconoSeccion seccion={seccionId} tamaño="lg" />
-                    <div>
+                    <div className="min-w-0">
                       {seccionActual && (
                         <span className="text-sm text-primary font-medium">
                           Sección {seccionActual.posicion} de {totalSecciones}

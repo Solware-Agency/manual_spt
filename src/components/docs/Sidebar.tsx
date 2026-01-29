@@ -14,8 +14,15 @@ interface SeccionManual {
 // Estructura de navegación del manual
 export const seccionesManual: SeccionManual[] = [
   {
-    id: "inicio",
+    id: "landing",
     titulo: "Inicio",
+    ruta: "/",
+    descripcion: "Página principal",
+    posicion: 0,
+  },
+  {
+    id: "inicio",
+    titulo: "Introducción",
     ruta: "/docs/inicio",
     descripcion: "Introducción y visión general",
     posicion: 1,
@@ -102,9 +109,11 @@ export const seccionesManual: SeccionManual[] = [
 interface SidebarProps {
   abierto: boolean;
   onCerrar: () => void;
+  /** En false (landing), el sidebar no se muestra en desktop hasta salir de la landing */
+  mostrarEnDesktop?: boolean;
 }
 
-const Sidebar = ({ abierto, onCerrar }: SidebarProps) => {
+const Sidebar = ({ abierto, onCerrar, mostrarEnDesktop = true }: SidebarProps) => {
   const location = useLocation();
 
   return (
@@ -120,7 +129,8 @@ const Sidebar = ({ abierto, onCerrar }: SidebarProps) => {
       {/* Sidebar */}
       <aside
         className={cn(
-          "fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] w-72 border-r bg-sidebar transition-transform duration-300 lg:translate-x-0",
+          "fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] w-72 border-r bg-sidebar transition-transform duration-300",
+          mostrarEnDesktop ? "lg:translate-x-0" : "lg:-translate-x-full",
           abierto ? "translate-x-0" : "-translate-x-full"
         )}
       >
@@ -135,7 +145,8 @@ const Sidebar = ({ abierto, onCerrar }: SidebarProps) => {
             {seccionesManual.map((seccion) => {
               const activo = !seccion.esExterno && location.pathname === seccion.ruta;
               const esExterno = seccion.esExterno || false;
-              
+              const esLanding = seccion.ruta === "/";
+
               const contenido = (
                 <>
                   <IconoSeccion seccion={seccion.id} tamaño="sm" />
@@ -149,9 +160,11 @@ const Sidebar = ({ abierto, onCerrar }: SidebarProps) => {
                       </span>
                     )}
                   </div>
-                  <span className="text-xs text-muted-foreground">
-                    {seccion.posicion}
-                  </span>
+                  {!esLanding && (
+                    <span className="text-xs text-muted-foreground">
+                      {seccion.posicion}
+                    </span>
+                  )}
                 </>
               );
               
