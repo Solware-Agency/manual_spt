@@ -102,22 +102,26 @@ const ExperienciaMedicoPatologoPage = () => {
               </ul>
             </li>
             <li>
-              <strong>Acciones</strong> disponibles desde el botón <strong>“Acciones”</strong> (según
-              el estado del caso):
+              <strong>Acciones</strong> disponibles:
               <ul className="list-disc pl-6 mt-2 space-y-1">
-                <li><strong>Ver</strong>: abre el detalle del caso (médico,y adicional).</li>
-                <img
-                  src="/imagenes/2-PRO-CASOS/3.png"
-                  className="rounded-lg border shadow-md max-w-full h-auto mx-auto"
-                />
                 <li>
                   <strong>Editar</strong>: permite modificar campos del caso (datos, comentarios)
                 </li>
-                <li><strong>Historial</strong>: muestra cambios realizados (puedes “Ocultar”).</li>
-                <li><strong>Correo</strong>: envía el informe/comunicación por email.</li>
-                <li><strong>Llamar</strong>: realiza una llamada al paciente (icono de llamada).</li>
-                <li><strong>WhatsApp</strong>: envía un mensaje por WhatsApp.</li>
-                <li><strong>Eliminar</strong>: elimina el caso (si aplica).</li>
+                <li>
+                  <strong>Historial</strong>: muestra cambios realizados (puedes “Ocultar”).
+                </li>
+                <li>
+                  <strong>Correo</strong>: envía el informe/comunicación por email.
+                </li>
+                <li>
+                  <strong>Llamar</strong>: realiza una llamada al paciente (icono de llamada).
+                </li>
+                <li>
+                  <strong>WhatsApp</strong>: envía un mensaje por WhatsApp.
+                </li>
+                <li>
+                  <strong>Eliminar</strong>: elimina el caso (si aplica).
+                </li>
               </ul>
             </li>
           </ul>
@@ -134,13 +138,6 @@ const ExperienciaMedicoPatologoPage = () => {
             <li>Revisa la lista de casos.</li>
             <img
                   src="/imagenes/2-PRO-CASOS/2.png"
-                  className="rounded-lg border shadow-md max-w-full h-auto mx-auto"
-                />
-            <li>
-              Usa el botón <strong>“Acciones”</strong> del caso para ejecutar la opción requerida.
-            </li>
-            <img
-                  src="/imagenes/2-PRO-CASOS/3.png"
                   className="rounded-lg border shadow-md max-w-full h-auto mx-auto"
                 />
             <li>

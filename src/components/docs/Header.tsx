@@ -1,7 +1,6 @@
 // Header del Manual SolHub — Solware
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { useState, useEffect } from "react";
-import SolwareLogo from "./SolwareLogo";
 import { Link } from "react-router-dom";
 
 interface HeaderProps {
@@ -38,80 +37,86 @@ const Header = ({ onMenuClick, menuAbierto }: HeaderProps) => {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex h-16 items-center px-4 lg:px-6">
-        {/* Botón menú móvil */}
-        <button
-          onClick={onMenuClick}
-          className="mr-4 p-2 rounded-lg hover:bg-muted lg:hidden"
-          aria-label={menuAbierto ? "Cerrar menú" : "Abrir menú"}
-        >
-          {menuAbierto ? <X size={24} /> : <Menu size={24} />}
-        </button>
+      <div className="flex h-16 items-center px-4 lg:px-6 gap-4">
+        {/* Izquierda: menú + Inicio */}
+        <div className="flex items-center gap-3 shrink-0">
+          {/* Botón menú móvil */}
+          <button
+            onClick={onMenuClick}
+            className="p-2 rounded-lg hover:bg-muted lg:hidden"
+            aria-label={menuAbierto ? "Cerrar menú" : "Abrir menú"}
+          >
+            {menuAbierto ? <X size={24} /> : <Menu size={24} />}
+          </button>
 
-        {/* Logo y título */}
-        <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <SolwareLogo className="h-8 w-auto" />
-          <div className="hidden md:block">
-            <span className="text-sm font-medium text-muted-foreground">
+          {/* Inicio */}
+          <Link to="/" className="group flex items-center transition-colors">
+            <span className="text-sm font-medium text-muted-foreground transition-colors group-hover:text-green-400">
               Inicio
             </span>
+          </Link>
+        </div>
+
+        {/* Centro: links (scroll horizontal en pantallas pequeñas) */}
+        <nav className="flex-1 min-w-0 overflow-x-auto whitespace-nowrap touch-pan-x">
+          <div className="flex items-center gap-4 sm:gap-6">
+            <a
+              href="https://www.solhub.agency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-xs sm:text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors"
+            >
+              SolHub
+            </a>
+
+            <Link
+              to="/docs/introduccion"
+              className="flex items-center text-xs sm:text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors"
+            >
+              Manual
+            </Link>
+
+            <a
+              href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ28TbL6x8Jj7yLpzgpH2OQ1MV5t5zdvwYRbjCTVKTjj-pNNzSSZ3mGSpguP7Sv4AksuyRdav2bJ"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-xs sm:text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors"
+            >
+              Agenda tu Cita
+            </a>
+
+            <a
+              href="https://preview.solhub.agency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-xs sm:text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors"
+            >
+              Ver Demostración
+            </a>
+
+            {/* Solware (en móvil va en la fila de links para no perderse) */}
+            <a
+              href="https://www.solware.agency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-xs sm:hidden font-medium text-muted-foreground hover:text-green-400 transition-colors"
+            >
+              Solware
+            </a>
           </div>
-        </Link>
+        </nav>
 
-        {/* Botón SolHub */}
-        <a
-          href="https://www.solhub.agency/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:flex items-center text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors ml-6"
-        >
-          SolHub
-        </a>
-
-        {/* Enlace a Manual */}
-        <Link
-          to="/docs/introduccion"
-          className="hidden sm:flex items-center text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors ml-6"
-        >
-          Manual
-        </Link>
-
-        {/* Enlace a Agenda tu Cita */}
-        <a
-          href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ28TbL6x8Jj7yLpzgpH2OQ1MV5t5zdvwYRbjCTVKTjj-pNNzSSZ3mGSpguP7Sv4AksuyRdav2bJ"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:flex items-center text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors ml-6"
-        >
-          Agenda tu Cita
-        </a>
-
-        {/* Enlace a Ver Demostración */}
-        <a
-          href="https://preview.solhub.agency/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden sm:flex items-center text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors ml-6"
-        >
-          Ver Demostración
-        </a>
-
-        {/* Espaciador */}
-        <div className="flex-1" />
-
-        {/* Acciones */}
-        <div className="flex items-center gap-4">
-          {/* Enlace a Solware */}
+        {/* Derecha: acciones */}
+        <div className="flex items-center gap-3 sm:gap-4 shrink-0">
           <a
             href="https://www.solware.agency/"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors"
+            className="hidden sm:flex items-center text-xs sm:text-sm font-medium text-muted-foreground hover:text-green-400 transition-colors"
           >
             Solware
           </a>
 
-          {/* Alternar tema */}
           <button
             onClick={alternarTema}
             className="p-2 rounded-lg hover:bg-muted transition-colors"
@@ -120,12 +125,11 @@ const Header = ({ onMenuClick, menuAbierto }: HeaderProps) => {
             {temaOscuro ? <Sun size={20} /> : <Moon size={20} />}
           </button>
 
-          {/* Enlace a soporte */}
           <a
             href="https://api.whatsapp.com/send?phone=%2B584129974533&context=AfdQaFIYoG4xbnNYuYYWrBJ0fQypn2iVMR2TX9Or4nqNa3ruF5Q85KRETWpTmF3QAYqbtNZmAY65Altq-5_0o2QfkKgGH9vmz5uWssRPqLSXTUm2tKeSuNjg6kNH_fHKCtVJI6QZTeKJFV5al0dvklKp3Q&source=FB_Page&app=facebook&entry_point=page_cta"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-sm font-medium"
+            className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors text-xs sm:text-sm font-medium"
           >
             Soporte
           </a>
